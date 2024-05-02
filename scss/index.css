@@ -1,0 +1,307 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 15px;
+  font-family: Arial, sans-serif;
+}
+@media (max-width: 768px) {
+  body {
+    font-size: 13px;
+  }
+}
+
+.bxh-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.bxh-header {
+  text-align: center;
+}
+.bxh-header .bxh-title {
+  font-size: 18px;
+  text-align: left;
+  padding: 10px 20px;
+}
+.bxh-header .bxh-title span {
+  font-weight: bold;
+}
+.bxh-header .view-options {
+  display: flex;
+  justify-content: flex-start;
+  border-bottom: 1px solid #e0e0e0;
+  border-top: 1px solid #e0e0e0;
+}
+.bxh-header .view-option {
+  padding: 15px 20px;
+  border: unset;
+  cursor: pointer;
+  color: #406A7B;
+  font-weight: bold;
+  background-color: unset;
+}
+.bxh-header .view-option.active {
+  border-bottom: 5px solid #406A7B;
+}
+.bxh-header .view-title {
+  text-align: left;
+  padding-left: 20px;
+  line-height: 50px;
+}
+
+.bxh-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+.bxh-table thead th {
+  padding: 10px 12px;
+  border: 1px solid #e0e0e0;
+  font-weight: unset;
+  min-width: 25px;
+}
+@media (max-width: 768px) {
+  .bxh-table thead th {
+    padding: 10px 7px;
+  }
+}
+.bxh-table thead th:first-child,
+.bxh-table thead th:nth-child(2),
+.bxh-table thead th:nth-child(9) {
+  font-weight: bold;
+}
+.bxh-table thead th:first-child {
+  text-align: right;
+  min-width: 40px;
+}
+.bxh-table thead th:nth-child(2),
+.bxh-table thead th:nth-child(3),
+.bxh-table thead th:nth-child(4),
+.bxh-table thead th:nth-child(5),
+.bxh-table thead th:nth-child(6),
+.bxh-table thead th:nth-child(7),
+.bxh-table thead th:nth-child(8) {
+  border-left: unset !important;
+  border-right: unset !important;
+}
+.bxh-table thead th:nth-child(3) {
+  border-right: 1px solid #e0e0e0 !important;
+}
+.bxh-table thead th:nth-child(2) {
+  text-align: left;
+  min-width: 130px;
+}
+.bxh-table thead th:nth-child(7) {
+  border-left: 1px solid #e0e0e0 !important;
+}
+.bxh-table tbody tr.active {
+  background-color: #E3EEF5;
+}
+.bxh-table tbody td {
+  padding: 8px 12px;
+  border: 1px solid #e0e0e0;
+  position: relative;
+}
+@media (max-width: 768px) {
+  .bxh-table tbody td {
+    padding: 8px 7px;
+  }
+}
+.bxh-table tbody td .status-dot {
+  position: absolute;
+  content: "";
+  width: 10px;
+  height: 10px;
+  left: 0;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+@media (max-width: 768px) {
+  .bxh-table tbody td .status-dot {
+    width: 7px;
+    height: 7px;
+  }
+}
+.bxh-table tbody td .status-dot.relegation {
+  background-color: #8A261F;
+}
+.bxh-table tbody td .status-dot.champions-league {
+  background-color: #28a745;
+}
+.bxh-table tbody td .status-dot.playoffs {
+  background-color: #2f1613;
+}
+.bxh-table tbody td .rank-change {
+  content: "";
+  position: absolute;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+}
+@media (max-width: 992px) {
+  .bxh-table tbody td .rank-change {
+    left: 10px;
+  }
+}
+@media (max-width: 768px) {
+  .bxh-table tbody td .rank-change {
+    left: 4px;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+  }
+}
+.bxh-table tbody td .rank-change.up {
+  border-bottom: 10px solid #3272AE;
+}
+@media (max-width: 768px) {
+  .bxh-table tbody td .rank-change.up {
+    border-bottom: 7px solid #3272AE;
+  }
+}
+.bxh-table tbody td .rank-change.down {
+  border-top: 10px solid rgba(50, 114, 174, 0.7);
+}
+@media (max-width: 768px) {
+  .bxh-table tbody td .rank-change.down {
+    border-top: 7px solid rgba(50, 114, 174, 0.7);
+  }
+}
+.bxh-table tbody td:first-child {
+  text-align: right;
+}
+.bxh-table tbody td:last-child {
+  min-width: 170px;
+}
+.bxh-table tbody td:first-child,
+.bxh-table tbody td:nth-child(2),
+.bxh-table tbody td:nth-child(9) {
+  font-weight: bold;
+}
+.bxh-table tbody td:nth-child(2),
+.bxh-table tbody td:nth-child(3),
+.bxh-table tbody td:nth-child(4),
+.bxh-table tbody td:nth-child(5),
+.bxh-table tbody td:nth-child(6),
+.bxh-table tbody td:nth-child(8) {
+  border-left: unset !important;
+  border-right: unset !important;
+}
+.bxh-table tbody td:nth-child(2) {
+  text-align: left;
+}
+.bxh-table tbody td:nth-child(3) {
+  border-right: 1px solid #e0e0e0 !important;
+}
+.bxh-table tbody td:nth-child(7) {
+  border-left: 1px solid #e0e0e0 !important;
+}
+
+.form {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin: 2px;
+  line-height: 24px;
+  text-align: center;
+  color: #ffffff;
+  border-radius: 4px;
+}
+.form.win {
+  background-color: #3272AB;
+}
+.form.draw {
+  background-color: #999B96;
+}
+.form.loss {
+  background-color: #6CA1CB;
+}
+
+.bxh-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: space-around;
+  padding: 20px;
+}
+.bxh-legend .note {
+  display: flex;
+  gap: 16px;
+}
+@media (max-width: 550px) {
+  .bxh-legend .note {
+    flex-direction: column;
+    gap: 7px;
+  }
+}
+@media (max-width: 550px) {
+  .bxh-legend .note:nth-child(1) p {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 7px;
+    justify-content: flex-end;
+  }
+}
+.bxh-legend .dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  line-height: 24px;
+  text-align: center;
+  color: #fff;
+  border-radius: 50%;
+}
+.bxh-legend .dot.relegation {
+  background-color: #8A261F;
+}
+.bxh-legend .dot.playoffs {
+  background-color: #2f1613;
+}
+.bxh-legend .dot.champions-league {
+  background-color: #28a745;
+}
+.bxh-legend .status {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+}
+.bxh-legend .status.win {
+  background-color: #3272AB;
+}
+.bxh-legend .status.draw {
+  background-color: #999B96;
+}
+.bxh-legend .status.loss {
+  background-color: #6CA1CB;
+}
+
+.bxh-table-container {
+  padding-bottom: 7px;
+}
+@media (max-width: 550px) {
+  .bxh-table-container {
+    overflow-y: hidden;
+    overflow-x: auto;
+  }
+}
+
+.bxh-table-container::-webkit-scrollbar {
+  height: 5px;
+  background: transparent !important;
+}
+
+.bxh-table-container::-webkit-scrollbar-thumb {
+  background-color: #6CA1CB;
+  border-radius: 6px;
+}/*# sourceMappingURL=index.css.map */

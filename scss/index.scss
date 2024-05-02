@@ -1,0 +1,360 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+$border-color: #e0e0e0;
+$win-color: #3272AB;
+$draw-color: #999B96;
+$loss-color: #6CA1CB;
+$relegation-color: #8A261F;
+$playoffs-color: #2f1613;
+$champions-league-color: #28a745;
+$prefix: "bxh-";
+
+body {
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+
+    @media (max-width:768px) {
+        font-size: 13px;
+    }
+}
+
+.#{$prefix}container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.#{$prefix}header {
+    text-align: center;
+
+
+    .#{$prefix}title {
+        font-size: 18px;
+        text-align: left;
+        padding: 10px 20px;
+
+        span {
+            font-weight: bold;
+        }
+    }
+
+    .view-options {
+        display: flex;
+        justify-content: flex-start;
+        border-bottom: 1px solid $border-color;
+        border-top: 1px solid $border-color;
+    }
+
+    .view-option {
+        padding: 15px 20px;
+        border: unset;
+        cursor: pointer;
+        color: #406A7B;
+        font-weight: bold;
+        background-color: unset;
+
+        &.active {
+            border-bottom: 5px solid #406A7B;
+        }
+    }
+
+    .view-title {
+        text-align: left;
+        padding-left: 20px;
+        line-height: 50px;
+    }
+}
+
+
+.#{$prefix}table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+
+
+    thead {
+
+        th {
+            padding: 10px 12px;
+            border: 1px solid $border-color;
+            font-weight: unset;
+            min-width: 25px;
+
+            @media (max-width: 768px) {
+                padding: 10px 7px;
+            }
+        }
+
+        th:first-child,
+        th:nth-child(2),
+        th:nth-child(9) {
+            font-weight: bold;
+        }
+
+        th:first-child {
+            text-align: right;
+            min-width: 40px;
+        }
+
+        th:nth-child(2),
+        th:nth-child(3),
+        th:nth-child(4),
+        th:nth-child(5),
+        th:nth-child(6),
+        th:nth-child(7),
+        th:nth-child(8) {
+            border-left: unset !important;
+            border-right: unset !important;
+        }
+
+        th:nth-child(3) {
+            border-right: 1px solid $border-color !important;
+        }
+
+        th:nth-child(2) {
+            text-align: left;
+            min-width: 130px;
+        }
+
+        th:nth-child(7) {
+            border-left: 1px solid $border-color !important;
+        }
+    }
+
+    tbody {
+        tr.active {
+            background-color: #E3EEF5;
+        }
+
+        td {
+            padding: 8px 12px;
+            border: 1px solid $border-color;
+            position: relative;
+
+            @media (max-width:768px) {
+                padding: 8px 7px;
+            }
+
+            .status-dot {
+                position: absolute;
+                content: '';
+                width: 10px;
+                height: 10px;
+                left: 0;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                border-radius: 50%;
+
+                @media (max-width:768px) {
+                    width: 7px;
+                    height: 7px;
+                }
+
+                &.relegation {
+                    background-color: $relegation-color;
+                }
+
+                &.champions-league {
+                    background-color: $champions-league-color;
+                }
+
+                &.playoffs {
+                    background-color: $playoffs-color;
+                }
+            }
+
+            .rank-change {
+                content: '';
+                position: absolute;
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                top: 50%;
+                left: 20px;
+                transform: translateY(-50%);
+
+                @media (max-width:992px) {
+                    left: 10px;
+                }
+
+                @media (max-width:768px) {
+                    left: 4px;
+                    border-left: 7px solid transparent;
+                    border-right: 7px solid transparent;
+                }
+
+                &.up {
+                    border-bottom: 10px solid #3272AE;
+
+                    @media (max-width:768px) {
+                        border-bottom: 7px solid #3272AE;
+
+                    }
+                }
+
+                &.down {
+                    border-top: 10px solid rgba($color: #3272AE, $alpha: 0.7);
+
+                    @media (max-width:768px) {
+                        border-top: 7px solid rgba($color: #3272AE, $alpha: 0.7);
+
+                    }
+                }
+            }
+        }
+
+        td:first-child {
+            text-align: right;
+        }
+
+        td:last-child {
+            min-width: 170px;
+        }
+
+        td:first-child,
+        td:nth-child(2),
+        td:nth-child(9) {
+            font-weight: bold;
+        }
+
+        td:nth-child(2),
+        td:nth-child(3),
+        td:nth-child(4),
+        td:nth-child(5),
+        td:nth-child(6),
+        td:nth-child(8) {
+            border-left: unset !important;
+            border-right: unset !important;
+        }
+
+        td:nth-child(2) {
+            text-align: left;
+        }
+
+        td:nth-child(3) {
+            border-right: 1px solid $border-color !important;
+        }
+
+        td:nth-child(7) {
+            border-left: 1px solid $border-color !important;
+        }
+    }
+}
+
+.form {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin: 2px;
+    line-height: 24px;
+    text-align: center;
+    color: #ffffff;
+    border-radius: 4px;
+
+    &.win {
+        background-color: $win-color;
+    }
+
+    &.draw {
+        background-color: $draw-color;
+    }
+
+    &.loss {
+        background-color: $loss-color;
+    }
+}
+
+.#{$prefix}legend {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: space-around;
+    padding: 20px;
+
+    .note {
+        display: flex;
+        gap: 16px;
+
+        @media (max-width:550px) {
+            flex-direction: column;
+            gap: 7px;
+        }
+    }
+
+    .note:nth-child(1) {
+        p {
+            @media (max-width:550px) {
+                display: flex;
+                flex-direction: row-reverse;
+                align-items: center;
+                gap: 7px;
+                justify-content: flex-end;
+            }
+        }
+    }
+
+    .dot {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        line-height: 24px;
+        text-align: center;
+        color: #fff;
+        border-radius: 50%;
+
+        &.relegation {
+            background-color: $relegation-color;
+        }
+
+        &.playoffs {
+            background-color: $playoffs-color;
+        }
+
+        &.champions-league {
+            background-color: $champions-league-color;
+        }
+    }
+
+    .status {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        line-height: 24px;
+        text-align: center;
+        color: #fff;
+        border-radius: 5px;
+
+        &.win {
+            background-color: $win-color;
+        }
+
+        &.draw {
+            background-color: $draw-color;
+        }
+
+        &.loss {
+            background-color: $loss-color;
+        }
+    }
+}
+
+.#{$prefix}table-container {
+    padding-bottom: 7px;
+
+    @media (max-width:550px) {
+        overflow-y: hidden;
+        overflow-x: auto;
+    }
+}
+
+.#{$prefix}table-container::-webkit-scrollbar {
+    height: 5px;
+    background: transparent !important;
+}
+
+.#{$prefix}table-container::-webkit-scrollbar-thumb {
+    background-color: $loss-color;
+    border-radius: 6px;
+}
